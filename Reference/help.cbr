@@ -1,0 +1,22 @@
+[hhp]
+Compatibility=1.1 or later
+Compiled file=help.chm
+Contents file=help.hhc
+Default topic=C:\Users\foxdi\Desktop\Работы\CHM Builder 2010\1.html
+Display compile progress=No
+Index file=help
+Language=0x419 Russian
+Title=Справка приложения «Автоматизированное рабочее место для специалиста отдела продаж ИП Овасапян Р.А»
+[/hhp]
+[builder]
+Page Count=1
+Address Count=1
+Index Count=-1
+Start Index=0
+[/builder]
+[contents]
+pt0=Назначение программы «Автоматизированное рабочее место для специалиста отдела продаж ИП Овасапян Р.А.»
+pa0=C:\Users\foxdi\Desktop\Работы\CHM Builder 2010\1.html
+pt1=Руководство пользователя
+pa1=C:\Users\foxdi\Desktop\Работы\CHM Builder 2010\2.html
+[/contents]

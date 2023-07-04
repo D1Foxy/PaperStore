@@ -1,0 +1,150 @@
+﻿<Window x:Class="PaperStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PaperStore"
+        mc:Ignorable="d"
+        Title="Главное меню"
+        Height="750"
+        Width="1200"
+        MinHeight="740"
+        MinWidth="1100"
+        MaxHeight="770"
+        MaxWidth="1250"
+        x:Name="mainWindowApp"
+        Icon="Resources/icon.ico"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10,6,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="221*"/>
+            <ColumnDefinition Width="79*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13.999"/>
+            <RowDefinition Height="49.997"/>
+            <RowDefinition Height="53.075"/>
+            <RowDefinition Height="493.975"/>
+            <RowDefinition Height="122.994"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="#FFDE1946" RadiusX="15" RadiusY="15" Margin="873,10,31,54" Grid.RowSpan="5" Grid.ColumnSpan="2" />
+        <ListView
+	  x:Name="productlistView"
+	  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+          HorizontalContentAlignment="Center" Margin="5,0,21,54" Grid.RowSpan="4"
+            MouseDoubleClick="EditProduct_MouseDoubleClick" Grid.Row="1">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"
+                               HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <StackPanel Width="300">
+
+                        <TextBlock Text="{Binding Name, StringFormat=Название: \{0\}}"
+				                       VerticalAlignment="Center"
+				                       TextAlignment="Center"
+				                       TextWrapping="Wrap"
+				                       HorizontalAlignment="Center"
+				                       Margin="3 3"
+                                       FontSize="15"
+				                       />
+                        <Border BorderBrush="#de1946" BorderThickness="2">
+                            <Image 
+			                       HorizontalAlignment="Center"
+			                       Height="200"
+			                       Width="200"
+                                   ToolTip="{Binding Description}">
+
+                                <Image.Source>
+                                    <BitmapImage UriSource = "{Binding ImagePath, TargetNullValue=Resources/picture.png}"
+                                                 CacheOption="OnLoad"
+                                                 CreateOptions="IgnoreImageCache"
+                                                 
+                                                 />
+
+                                </Image.Source>
+                            </Image>
+                        </Border>
+
+                        <TextBlock Text="{Binding ArticleNumber, StringFormat=Артикль: \{0\}}"
+
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                        <TextBlock Text="{Binding Category, StringFormat=Категория: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                        <TextBlock Text="{Binding Manufacturer, StringFormat=Производитель: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                        <TextBlock Text="{Binding Cost, StringFormat=Стоимость: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                        <TextBlock Text="{Binding QuantityInStock, StringFormat=Количество на складе: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                        <TextBlock Text="{Binding Status, StringFormat=Статус: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                      />
+                        <TextBlock Text="{Binding Suppler, StringFormat=Поставщик: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                        <TextBlock Text="{Binding Unit, StringFormat=Ед.измерения: \{0\}}"
+				                       Margin="5 5"
+                                       FontSize="15"
+                                       />
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <ComboBox Margin="67,190,99,280" Name="sortProductComboBox"
+                          SelectionChanged="sortProductComboBox_SelectionChanged" Grid.Row="3" Grid.Column="1"/>
+        <Button Content="Выход"
+                        Click="exitButtonClick" Background="White" Margin="66,23,99,76" Grid.Row="4" BorderBrush="#FFACACAC" Grid.Column="1"/>
+
+        <TextBlock x:Name="statusUser" TextAlignment="Center" Foreground="White" Margin="26,36,55,419" Grid.Row="3" Grid.Column="1"><Run Text="Роль: Иванов Иван"/><LineBreak/><Run Text=" Иванович"/></TextBlock>
+        <Button Margin="66,340,99,130"
+                            x:Name="сlearButton"                     
+                            Content="Очистить"
+                            Click="сlearButton_Click" Background="White"
+                             Grid.Row="3" BorderBrush="#FFACACAC" Grid.Column="1" Foreground="Black"/>
+        <TextBlock Margin="67,244,100,230" Text="Поиск" Height="20" Foreground="White" Grid.Row="3" Grid.Column="1"/>
+        <TextBox Margin="66,265,99,205" x:Name="searchBox"
+                         TextChanged="searchBox_TextChanged" Grid.Row="3" BorderBrush="#FFACACAC" Grid.Column="1"/>
+
+        <TextBlock Margin="67,96,99,375" Text="Фильтр" Foreground="White" Grid.Row="3" Grid.Column="1" />
+        <ComboBox Margin="67,120,99,350" x:Name="filterProductComboBox"     
+                          SelectionChanged="filterProductComboBox_SelectionChanged" Grid.Row="3" BorderBrush="#FF3A3A3A" Grid.Column="1"/>
+
+        <TextBlock Margin="68,165,100,305" Text="Сортировка" Foreground="White" Grid.Row="3" Grid.Column="1" />
+        <Image Source="Resources/logo.png" Margin="58,0,88,467" Grid.RowSpan="3" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock
+        TextAlignment="Center"
+        x:Name="countProducts"
+        Text="Количество: " Foreground="White" RenderTransformOrigin="0.538,-2.823" Margin="66,317,100,155" Grid.Row="3" Grid.Column="1"/>
+        <Button Name="addProduct" Margin="66,400,99,70"
+                            Content="Добавить товар"
+                            Click="addProductButtonClick" Foreground="Black" Grid.Row="3" Background="White" BorderBrush="#FFACACAC" Grid.Column="1"/>
+        <Button Name="deleteProduct"
+                            Margin="66,460,99,10"
+                            Content="Удалить товар"
+                            Click="delProductButton" Foreground="Black" Grid.Row="3" Background="White" BorderBrush="#FFACACAC" Grid.Column="1"/>
+    </Grid>
+</Window>
